@@ -104,7 +104,7 @@ environments:
     activation:
       triggerRefs:
         - github-pull-request
-        - github-push-main
+        # @dev-lanes-deferred:ICAgICAgICAtIGdpdGh1Yi1wdXNoLW1haW4= (tooling/bootstrap/dev-lanes.mjs --restore puts it back)
         - local-development
     dependencyMode: advisory
     policies:
@@ -118,7 +118,7 @@ environments:
     activation:
       triggerRefs:
         - github-pull-request
-        # @deploys-deferred:ICAgICAgICAtIGdpdGh1Yi1wdXNoLW1haW4= (tooling/bootstrap/deploys.mjs --restore puts it back)
+        - github-push-main
     policies:
       requireApproval: "false"
     env:
@@ -130,10 +130,8 @@ environments:
     activation:
       triggerRefs:
         - github-pull-request
-        # @deploys-deferred:ICAgICAgICAtIGdpdGh1Yi1wdXNoLW1haW4= (tooling/bootstrap/deploys.mjs --restore puts it back)
-    promotion:
-      dependsOn:
-        - environment: stage
+        - github-push-main
+    # @promotion-deferred:ICAgIHByb21vdGlvbjoKICAgICAgZGVwZW5kc09uOgogICAgICAgIC0gZW52aXJvbm1lbnQ6IHN0YWdl (tooling/bootstrap/promotion.mjs --restore puts it back)
     policies:
       requireApproval: "false"
     env:
